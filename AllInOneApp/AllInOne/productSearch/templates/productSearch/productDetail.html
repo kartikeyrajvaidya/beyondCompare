@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{product.product_name}} Detail</h2>
+  <br>
+  <h4>Model:- {{product.product_model}}</h4>
+  <br>
+  <hr>
+  <br>
+    <div class="container">
+      <h3>Product Images</h3>
+      <br>
+        {% for productImg in product.product_images %}
+          <img class="media-object" src="{{productImg}}" alt="..." width="70" height="80">
+          <br>
+        {% endfor %}
+    </div>
+  <br>
+  <a href="{% url 'productSearch:productSpecs' productId=product.product_id %}" class="btn btn-info" role="button">Product Specification</a>
+  <br>
+  <hr>
+  <br>
+  <h1>Store Links</h1>
+  <br>
+  <br>
+    {% for store in stores %}
+      {% if store %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="media">
+              <div class="media-left">
+                <a href="{{store.product_store_url}}">
+                  <img class="media-object" src="{{store.product_store_logo}}" alt="..." width="70" height="80">
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">{{store.product_store}}</h4>
+                <p><h3>Price: {{store.product_price}} Rs</h3></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      {% endif %}
+    {% endfor %}
+<br>
+<br>
+<br>
+{% endblock %}

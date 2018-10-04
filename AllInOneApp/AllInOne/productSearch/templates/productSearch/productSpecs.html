@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Main Specs</h1>
+    <br>
+    <ol class="list-group">
+      {% for spec in mainSpecs %}
+        <li class="list-group-item" >{{spec}}</li>
+        <br>
+      {% endfor %}
+    </ol>
+  </div>
+  <div class="container">
+    <h1>Sub Specs</h1>
+    <br>
+    {% for key, value in subSpecs.items %}
+        <h3>{{key}}<h3>
+        <ol class="list-group">
+          {% for spec in value %}
+            <li class="list-group-item" ><h5>{{spec.spec_key}} : {{ spec.spec_value }}</h5></li>
+          {% endfor %}
+        </ol>
+    {% endfor %}
+  </div>
+  <br>
+  </hr>
+  <br>
+{% endblock %}
